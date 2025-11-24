@@ -1,0 +1,35 @@
+@using Task2.Data.Models
+@model Task2.Data.Models.Employee
+@{
+    ViewData["Title"] = "Delete Employee"; 
+}
+<h2>Delete Employee:</h2>
+<form asp-action="Delete" asp-controller="Employee" method="post">
+<input type="hidden" asp-for = "Eid">
+<div class="mb-3">
+<label asp-for = "Name" class = "form-label"></label>
+<input asp-for = "Name" class="form-control" />
+</div>
+<div class="mb-3">
+<label asp-for = "Email" class = "form-label"></label>
+<input asp-for = "Email" class="form-control" />
+</div>
+<div class="mb-3">
+<label asp-for = "Phone" class = "form-label"></label>
+<input asp-for = "Phone" class="form-control" />
+</div>
+<div class="mb-3">
+<label asp-for = "DepId" class = "form-label">Department</label>
+ <select asp-for="DepId" class="form-control" asp-items="ViewBag.Departments">
+            <option value="">-- Select Department --</option>
+        </select>
+</div>
+<div class="mb-3">
+<label asp-for = "Did" class = "form-label">Designation</label>
+ <select asp-for="Did" class="form-control" asp-items="ViewBag.Designations">
+            <option value="">-- Select Designation --</option>
+        </select>
+</div>
+<input type="submit" Value="Delete Employee" class="btn btn-primary w-100 p-2">
+</form>
+<a  asp-controller="Employee" asp-action="Index" class="text-decoration-none text-center">Back</a>

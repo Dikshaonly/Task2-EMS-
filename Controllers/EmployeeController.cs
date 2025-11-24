@@ -56,5 +56,27 @@ using Task2.Data.Models;
             return View(emp);
         }
 
+        public IActionResult Delete(int id){
+            var data = _context.Employees.Find(id);
+            if(data==null){
+                return NotFound();
+            }
+            ViewBag.Departments = new SelectList(_context.Departments, "DepId", "DepName");
+            ViewBag.Designations = new SelectList(_context.Designations, "Did", "Dname");
+            return View(data);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Employee emp){
+            ModelState.Remove("Dep");
+            ModelState.Remove("DidNavigation");
+            if (ModelState.IsValid)
+            {
+                _context.Employees.Remove(emp);
+                _context.SaveChanges();
+                return RedirectToAction("Index","Employee");
+            }
+            return View(emp);
+        }
     }
  }
