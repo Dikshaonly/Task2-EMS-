@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
@@ -11,7 +12,11 @@ using Task2.Data.Models;
             _context = context;
         }
         public IActionResult Index(){
-            var data = _context.Employees.ToList();
+            var data = _context.Employees
+            .Include(e=>e.Dep)
+            .Include(e=>e.DidNavigation)
+            .ToList();
+            Console.WriteLine(data);
             return View(data);
         }
         public IActionResult Create(){

@@ -15,8 +15,8 @@ table, th, td {
 <th>Name</th>
 <th>Email</th>
 <th>Phone</th>
-<th>Dept.Id</th>
-<th>Des.Id</th>
+<th>Deptartment</th>
+<th>Designation</th>
 <th colspan="2">Actions</th>
 </tr>
 @foreach(var item in Model){
@@ -25,8 +25,8 @@ table, th, td {
     <td>@item.Name</td>
     <td>@item.Email</td>
   <td>@item.Phone</td>
-    <td>@item.DepId</td>
-    <td>@item.Did</td>
+    <td>@item.Dep?.DepName</td>
+    <td>@item.DidNavigation?.Dname</td>
   <td><a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.Eid" class="text-decoration-none btn btn-primary">Edit</a></td>
   <td><a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Eid" class="text-decoration-none btn btn-danger">Delete</a></td>
 </tr>
