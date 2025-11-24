@@ -21,6 +21,8 @@ using Task2.Data.Models;
         }
         [HttpPost]
         public IActionResult Create(Employee emp){
+             ModelState.Remove("Dep");
+            ModelState.Remove("DidNavigation");
             if (ModelState.IsValid)
             {
                 _context.Employees.Add(emp);
@@ -31,5 +33,28 @@ using Task2.Data.Models;
             ViewBag.Designations = new SelectList(_context.Designations, "Did", "Dname");
             return View(emp);
         }
+
+        public IActionResult Edit(int Id){
+            ViewBag.Departments = new SelectList(_context.Departments, "DepId", "DepName");
+            ViewBag.Designations = new SelectList(_context.Designations, "Did", "Dname");
+            var data = _context.Employees.Find(Id);
+            return View(data);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Employee emp){
+             ModelState.Remove("Dep");
+            ModelState.Remove("DidNavigation");
+            if (ModelState.IsValid)
+            {
+                _context.Employees.Update(emp);
+                _context.SaveChanges();
+                return RedirectToAction("Index","Employee");
+            }
+             ViewBag.Departments = new SelectList(_context.Departments, "DepId", "DepName");
+            ViewBag.Designations = new SelectList(_context.Designations, "Did", "Dname");
+            return View(emp);
+        }
+
     }
  }

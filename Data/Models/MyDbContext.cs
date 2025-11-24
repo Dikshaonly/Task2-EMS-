@@ -56,6 +56,7 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.DepId).HasColumnName("DepID");
             entity.Property(e => e.Email).HasMaxLength(90);
             entity.Property(e => e.Name).HasMaxLength(90);
+            entity.Property(e => e.Phone).HasMaxLength(20);
 
             entity.HasOne(d => d.Dep).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.DepId)
