@@ -17,12 +17,16 @@
 <input asp-for = "Phone" class="form-control" />
 </div>
 <div class="mb-3">
-<label asp-for = "DepId" class = "form-label"></label>
-<input asp-for = "DepId" class="form-control" />
+<label asp-for = "DepId" class = "form-label">Department</label>
+ <select asp-for="DepId" class="form-control" asp-items="ViewBag.Departments">
+            <option value="">-- Select Department --</option>
+        </select>
 </div>
 <div class="mb-3">
-<label asp-for = "Did" class = "form-label"></label>
-<input asp-for = "Did" class="form-control" />
+<label asp-for = "Did" class = "form-label">Designation</label>
+ <select asp-for="Did" class="form-control" asp-items="ViewBag.Designations">
+            <option value="">-- Select Department --</option>
+        </select>
 </div>
 <input type="submit" Value="Add Employee" class="btn btn-primary w-100 p-2">
 </form>
