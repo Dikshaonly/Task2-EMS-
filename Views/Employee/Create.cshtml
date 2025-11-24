@@ -1,4 +1,28 @@
 @using Task2.Data.Models
+@model Task2.Data.Models.Employee
 @{
     ViewData["Title"] = "AddEmployee";
 }
+<form asp-action="Create" asp-controller="Employee" method="post">
+<div class="mb-3">
+<label asp-for = "Name" class = "form-label"></label>
+<input asp-for = "Name" class="form-control" />
+</div>
+<div class="mb-3">
+<label asp-for = "Email" class = "form-label"></label>
+<input asp-for = "Email" class="form-control" />
+</div>
+<div class="mb-3">
+<label asp-for = "Phone" class = "form-label"></label>
+<input asp-for = "Phone" class="form-control" />
+</div>
+<div class="mb-3">
+<label asp-for = "DepId" class = "form-label"></label>
+<input asp-for = "DepId" class="form-control" />
+</div>
+<div class="mb-3">
+<label asp-for = "Did" class = "form-label"></label>
+<input asp-for = "Did" class="form-control" />
+</div>
+<input type="submit" Value="Add Employee" class="btn btn-primary w-100 p-2">
+</form>

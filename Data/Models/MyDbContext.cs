@@ -23,27 +23,25 @@ public partial class MyDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=182.93.94.30;Database=EMS;User=sa;Password=bdnquery;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=182.93.94.30;Database=EMS;User Id=sa;Password=bdnquery;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Department>(entity =>
         {
-            entity.HasKey(e => e.DepId).HasName("PK__Departme__DB9CAA5F811C34B1");
+            entity.HasKey(e => e.DepId).HasName("PK__Departme__DB9CAA5F019735ED");
 
             entity.ToTable("Department");
 
-            entity.Property(e => e.DepId).ValueGeneratedNever();
             entity.Property(e => e.DepName).HasMaxLength(90);
         });
 
         modelBuilder.Entity<Designation>(entity =>
         {
-            entity.HasKey(e => e.Did).HasName("PK__Designat__C0312218AF4E1D8E");
+            entity.HasKey(e => e.Did).HasName("PK__Designat__C0312218CCB549B5");
 
             entity.ToTable("Designation");
 
-            entity.Property(e => e.Did).ValueGeneratedNever();
             entity.Property(e => e.Dname)
                 .HasMaxLength(90)
                 .HasColumnName("DName");
@@ -51,7 +49,7 @@ public partial class MyDbContext : DbContext
 
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.Eid).HasName("PK__Employee__C1971B539136D63B");
+            entity.HasKey(e => e.Eid).HasName("PK__Employee__C1971B537FA25ADB");
 
             entity.ToTable("Employee");
 
@@ -61,11 +59,11 @@ public partial class MyDbContext : DbContext
 
             entity.HasOne(d => d.Dep).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.DepId)
-                .HasConstraintName("FK__Employee__DepID__1920BF5C");
+                .HasConstraintName("FK__Employee__DepID__286302EC");
 
             entity.HasOne(d => d.DidNavigation).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.Did)
-                .HasConstraintName("FK__Employee__Did__1A14E395");
+                .HasConstraintName("FK__Employee__Did__29572725");
         });
 
         OnModelCreatingPartial(modelBuilder);
