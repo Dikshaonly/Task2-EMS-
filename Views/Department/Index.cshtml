@@ -1,0 +1,29 @@
+@using Task2.Data.Models
+@{
+    ViewData["Title"] = "Department";
+}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+<h2 class="text-center">Department's Data:</h2>
+<table class="table">
+<tr>
+<th>Id</th>
+<th>Deptartment</th>
+<th colspan="2">Actions</th>
+</tr>
+@foreach(var item in Model){
+    <tr>
+    <td>@item.DepId</td>
+    <td>@item.DepName</td>
+  <td><a asp-controller="Department" asp-action="Edit" asp-route-id="@item.DepId" class="text-decoration-none btn btn-primary">Edit</a></td>
+  <td><a asp-controller="Department" asp-action="Delete" asp-route-id="@item.DepId" class="text-decoration-none btn btn-danger">Delete</a></td>
+</tr>
+}
+</table>
+  <a asp-controller="Department" asp-action="Create" class="text-decoration-none text-center btn btn-primary">Add Department</a>
+
+
