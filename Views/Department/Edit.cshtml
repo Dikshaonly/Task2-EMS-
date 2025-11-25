@@ -1,0 +1,14 @@
+@using Task2.Data.Models
+@model Task2.Data.Models.Department
+@{
+    ViewData["Title"] = "Edit Department";
+}
+<form asp-action="Edit" asp-controller="Department" method="post">
+<input type="hidden" asp-for="DepId">
+<div class="mb-3">
+<label asp-for = "DepName" class = "form-label">Department Name</label>
+<input asp-for = "DepName" class="form-control" />
+</div>
+<input type="submit" Value="Update Department" class="btn btn-primary w-100 p-2">
+</form>
+<a asp-controller="Department" asp-action="Index" class="btn btn-secondary w-100 p-2">Back</a>

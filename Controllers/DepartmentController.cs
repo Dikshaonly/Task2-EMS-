@@ -30,6 +30,26 @@ using Task2.Data.Models;
             }
             return View(dep);
         } 
+
+        public IActionResult Edit(int Id){
+            var data = _context.Departments.Find(Id);
+            if(data==null){
+                return NotFound();
+            }
+            return View(data);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Department dep){
+            if (ModelState.IsValid)
+            {
+                _context.Departments.Update(dep);
+            _context.SaveChanges();
+                return RedirectToAction("Index","Department");
+            }
+            return View(dep);
+
+        }
     
     }
  }
