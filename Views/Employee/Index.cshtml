@@ -28,10 +28,29 @@ table, th, td {
     <td>@item.Dep?.DepName</td>
     <td>@item.DidNavigation?.Dname</td>
   <td><a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.Eid" class="text-decoration-none btn btn-primary">Edit</a></td>
-  <td><a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Eid" class="text-decoration-none btn btn-danger">Delete</a></td>
+  <td><button class = "btn btn-danger"
+  data-bs-toggle="modal"
+  data-bs-target="#deleteModal"
+  data-url="@Url.Action("Delete", "Employee", new{id=item.Eid})">
+  Delete</button></td>
 </tr>
 }
 </table>
   <a asp-controller="Employee" asp-action="Create" class="text-decoration-none text-center btn btn-primary w-100 p-2">Add Employee</a>
 
+
+@await Html.PartialAsync("_Popup")
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("deleteModal");
+
+        modal.addEventListener("show.bs.modal", function (event) {
+            var button = event.relatedTarget;
+            var url = button.getAttribute("data-url");
+
+            var confirmBtn = document.getElementById("confirmDeleteBtn");
+            confirmBtn.href = url;
+        });
+    });
+</script>
 

@@ -66,12 +66,15 @@ using Task2.Data.Models;
             if(data==null){
                 return NotFound();
             }
+            _context.Employees.Remove(data);
+                _context.SaveChanges();
+                return RedirectToAction("Index","Employee");
             ViewBag.Departments = new SelectList(_context.Departments, "DepId", "DepName");
             ViewBag.Designations = new SelectList(_context.Designations, "Did", "Dname");
-            return View(data);
+
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult Delete(Employee emp){
             ModelState.Remove("Dep");
             ModelState.Remove("DidNavigation");
@@ -82,6 +85,6 @@ using Task2.Data.Models;
                 return RedirectToAction("Index","Employee");
             }
             return View(emp);
-        }
+        }*/
     }
  }
