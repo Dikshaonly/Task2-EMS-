@@ -52,13 +52,25 @@ using Task2.Data.Models;
         }
 
         public IActionResult Delete(int Id){
-            var data = _context.Departments.Find(Id);
-            if(data==null){
+            try{
+                var data = _context.Departments.Find(Id);
+                if(data==null){
                 return NotFound();
             }
-             _context.Departments.Remove(data);
+            var hasEmployee = _context.Departments.Any(e=>e.DepId==Id);
+            if(hasEmployee){
+                TempData["ErrorMessage"] = "Cannot delete this department because it has employees assigned to it. Please reassign or delete the employees first.";
+                return RedirectToAction("Index","Department");
+            }
+                _context.Departments.Remove(data);
                 _context.SaveChanges();
-                return RedirectToAction("Index", "Department");
+                TempData["SuccessMessage"] = "Department deleted successfully";
+                return RedirectToAction("Index","Department");
+            }
+            catch(Exception ex){
+                TempData["ErrorMessage"] = "Error occured while deleting department"+ex.Message;
+                return RedirectToAction("Index","Department");
+            }
         }
 
         
