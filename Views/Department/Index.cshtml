@@ -20,10 +20,32 @@ table, th, td {
     <td>@item.DepId</td>
     <td>@item.DepName</td>
   <td><a asp-controller="Department" asp-action="Edit" asp-route-id="@item.DepId" class="text-decoration-none btn btn-primary">Edit</a></td>
-  <td><a asp-controller="Department" asp-action="Delete" asp-route-id="@item.DepId" class="text-decoration-none btn btn-danger">Delete</a></td>
+  <td><button class="btn btn-danger"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteModal"
+        data-url="@Url.Action("Delete", "Department", new { id = item.DepId })">
+    Delete
+</button>
+</td>
 </tr>
 }
 </table>
-  <a asp-controller="Department" asp-action="Create" class="text-decoration-none text-center btn btn-primary">Add Department</a>
+  <a asp-controller="Department" asp-action="Create" class="text-decoration-none text-center btn btn-primary w-100 p-2">Add Department</a>
+  <a asp-controller="Employee" asp-action="Index" class="text-decoration-none btn btn-secondary w-100 p-2">View Employee</a>
 
+
+@await Html.PartialAsync("_Popup")
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("deleteModal");
+
+        modal.addEventListener("show.bs.modal", function (event) {
+            var button = event.relatedTarget;
+            var url = button.getAttribute("data-url");
+
+            var confirmBtn = document.getElementById("confirmDeleteBtn");
+            confirmBtn.href = url;
+        });
+    });
+</script>
 

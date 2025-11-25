@@ -56,19 +56,11 @@ using Task2.Data.Models;
             if(data==null){
                 return NotFound();
             }
-            return View(data);
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Department dep){
-            if (ModelState.IsValid)
-            {
-                _context.Departments.Remove(dep);
+             _context.Departments.Remove(data);
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Department");
-            }
-            return View(dep);
         }
-    
+
+        
     }
  }
