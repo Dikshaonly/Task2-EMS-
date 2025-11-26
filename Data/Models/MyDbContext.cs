@@ -21,9 +21,11 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Employee> Employees { get; set; }
 
+    public virtual DbSet<Relative> Relatives { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=182.93.94.30;Database=EMS;User Id=sa;Password=bdnquery;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=182.93.94.30;Database=EMS;User=sa;Password=bdnquery;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -65,6 +67,21 @@ public partial class MyDbContext : DbContext
             entity.HasOne(d => d.DidNavigation).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.Did)
                 .HasConstraintName("FK__Employee__Did__29572725");
+        });
+
+        modelBuilder.Entity<Relative>(entity =>
+        {
+            entity.HasKey(e => e.Rid).HasName("PK__Relative__CAF055CA9483A75B");
+
+            entity.ToTable("Relative");
+
+            entity.Property(e => e.Email).HasMaxLength(90);
+            entity.Property(e => e.Name).HasMaxLength(90);
+            entity.Property(e => e.Relation).HasMaxLength(90);
+
+            entity.HasOne(d => d.EidNavigation).WithMany(p => p.Relatives)
+                .HasForeignKey(d => d.Eid)
+                .HasConstraintName("FK__Relative__Eid__2C3393D0");
         });
 
         OnModelCreatingPartial(modelBuilder);

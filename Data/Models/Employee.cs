@@ -20,4 +20,6 @@ public partial class Employee
     public virtual Department? Dep { get; set; }
 
     public virtual Designation? DidNavigation { get; set; }
+
+    public virtual ICollection<Relative> Relatives { get; set; } = new List<Relative>();
 }

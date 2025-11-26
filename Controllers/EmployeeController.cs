@@ -61,6 +61,17 @@ using Task2.Data.Models;
             return View(emp);
         }
 
+        public IActionResult Details(int id){
+            var data = _context.Employees
+            .Include(e=>e.Dep)
+            .Include(e => e.DidNavigation)
+            .FirstOrDefault(e => e.Eid == id);
+            if(data==null){
+                return NotFound();
+            }
+            return View(data);
+        }
+
         public IActionResult Delete(int id){
             var data = _context.Employees.Find(id);
             if(data==null){
