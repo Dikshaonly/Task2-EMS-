@@ -3,32 +3,37 @@
 @{
     ViewData["Title"] = "Add Relative";
 }
-<h2>Add Relatives </h2>
+<h2>Add Relative for @ViewBag.EName</h2>
 <form asp-action="Create" asp-controller="Relative" method="post">
-<input type = "hidden" name = "empId" value = "@ViewBag.eId">
+<input type="hidden" name="id" value="@ViewBag.eId">
+
 <div class="mb-3">
-<label asp-for = "Name" class = "form-label"></label>
-<input asp-for = "Name" class="form-control" />
+<label asp-for="Name" class="form-label"></label>
+<input asp-for="Name" class="form-control" />
 </div>
+
 <div class="mb-3">
-<label asp-for = "Email" class = "form-label"></label>
-<input asp-for = "Email" class="form-control" />
+<label asp-for="Email" class="form-label"></label>
+<input asp-for="Email" class="form-control" />
 </div>
+
 <div class="mb-3">
-<label asp-for = "Phone" class = "form-label"></label>
-<input asp-for = "Phone" class="form-control" />
+<label asp-for="Phone" class="form-label"></label>
+<input asp-for="Phone" class="form-control" />
 </div>
+
 <div class="mb-3">
-<label asp-for = "Relation" class = "form-label">Relation</label>
- <select asp-for="Relation" class="form-control">
-            <option value="">-- Select Relation --</option>
-            <option value="Spouse">Spouse</option>
-            <option value="Child">Child</option>
-            <option value="Parent">Parent</option>
-            <option value="Sibling">Sibling</option>
-            <option value="Other">Other</option>
-        </select>
+<label asp-for="Relation" class="form-label">Relation</label>
+<select asp-for="Relation" class="form-control">
+    <option value="">-- Select Relation --</option>
+    <option value="Spouse">Spouse</option>
+    <option value="Child">Child</option>
+    <option value="Parent">Parent</option>
+    <option value="Sibling">Sibling</option>
+    <option value="Other">Other</option>
+</select>
 </div>
-<input type="submit" Value="Add Relative" class="btn btn-primary w-100 p-2">
+
+<input type="submit" value="Add Relative" class="btn btn-primary w-100 p-2">
 </form>
-<a asp-controller="Employee" asp-action="Details" class="btn btn-secondary w-100 p-2">Back</a>
+<a asp-controller="Employee" asp-action="Details" asp-route-Id="@ViewBag.eId" class="btn btn-secondary w-100 p-2 mt-2">Back</a>

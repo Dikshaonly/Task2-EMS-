@@ -32,6 +32,21 @@ using Task2.Data.Models;
             return View();
         }
 
-    
+        [HttpPost]
+        public IActionResult Create(Relative rel,int id){
+            Console.WriteLine($"Eid ={id}");
+            ModelState.Remove("EidNavigation");
+            if (ModelState.IsValid)
+            {
+                rel.Eid=id;
+                _context.Relatives.Add(rel);
+                _context.SaveChanges();
+                return RedirectToAction("Details","Employee",new{Id=id});
+            }
+           var data = _context.Employees.Find(id);
+           ViewBag.EName =data?.Name;
+            ViewBag.eId = id;
+            return View(rel);
+        }
     }
  }
