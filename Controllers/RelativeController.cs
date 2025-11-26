@@ -34,7 +34,6 @@ using Task2.Data.Models;
 
         [HttpPost]
         public IActionResult Create(Relative rel,int id){
-            Console.WriteLine($"Eid ={id}");
             ModelState.Remove("EidNavigation");
             if (ModelState.IsValid)
             {
@@ -46,6 +45,37 @@ using Task2.Data.Models;
            var data = _context.Employees.Find(id);
            ViewBag.EName =data?.Name;
             ViewBag.eId = id;
+            return View(rel);
+        }
+
+        public IActionResult Edit(int id){
+            var data = _context.Relatives
+                .Include(r => r.EidNavigation)
+                .FirstOrDefault(r => r.Rid == id);
+                
+            if (data == null)
+            {
+                return NotFound();
+            }
+            
+            ViewBag.EName = data.EidNavigation?.Name;
+            ViewBag.eId = data.Eid;
+            
+            return View(data);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Relative rel){
+            ModelState.Remove("EidNavigation");
+            if (ModelState.IsValid)
+            {
+                _context.Relatives.Update(rel);
+                _context.SaveChanges();
+                return RedirectToAction("Details","Employee",new{Id=rel.Eid});
+            }
+           var data = _context.Employees.Find(rel.Eid);
+           ViewBag.EName =data?.Name;
+            ViewBag.eId = rel.Eid;
             return View(rel);
         }
     }

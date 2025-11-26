@@ -1,0 +1,39 @@
+@using Task2.Data.Models
+@model Task2.Data.Models.Relative
+@{
+    ViewData["Title"] = "Edit Relative";
+}
+<h2>Update Relative of @ViewBag.EName</h2>
+<form asp-action="Edit" asp-controller="Relative" method="post">
+<input type="hidden" asp-for="Rid">
+
+<div class="mb-3">
+<label asp-for="Name" class="form-label"></label>
+<input asp-for="Name" class="form-control" />
+</div>
+
+<div class="mb-3">
+<label asp-for="Email" class="form-label"></label>
+<input asp-for="Email" class="form-control" />
+</div>
+
+<div class="mb-3">
+<label asp-for="Phone" class="form-label"></label>
+<input asp-for="Phone" class="form-control" />
+</div>
+
+<div class="mb-3">
+<label asp-for="Relation" class="form-label">Relation</label>
+<select asp-for="Relation" class="form-control">
+    <option value="">-- Select Relation --</option>
+    <option value="Spouse">Spouse</option>
+    <option value="Child">Child</option>
+    <option value="Parent">Parent</option>
+    <option value="Sibling">Sibling</option>
+    <option value="Other">Other</option>
+</select>
+</div>
+
+<input type="submit" value="Update Relative" class="btn btn-primary w-100 p-2">
+</form>
+<a asp-controller="Employee" asp-action="Details" asp-route-Id="@ViewBag.eId" class="btn btn-secondary w-100 p-2 mt-2">Back</a>
