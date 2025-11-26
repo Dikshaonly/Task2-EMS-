@@ -65,6 +65,7 @@ using Task2.Data.Models;
             var data = _context.Employees
             .Include(e=>e.Dep)
             .Include(e => e.DidNavigation)
+            .Include(e=>e.Relatives)
             .FirstOrDefault(e => e.Eid == id);
             if(data==null){
                 return NotFound();

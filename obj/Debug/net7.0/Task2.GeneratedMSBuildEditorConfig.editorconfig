@@ -60,6 +60,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/user/Desktop/Task2/Views/Relative/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVsYXRpdmUvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/user/Desktop/Task2/Views/Relative/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVsYXRpdmUvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/user/Desktop/Task2/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
