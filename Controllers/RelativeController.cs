@@ -78,5 +78,30 @@ using Task2.Data.Models;
             ViewBag.eId = rel.Eid;
             return View(rel);
         }
+
+         public IActionResult Delete(int id)
+        {
+            try
+            {
+                var data = _context.Relatives.Find(id);
+                if (data == null)
+                {
+                    return NotFound();
+                }
+                
+                int employeeId = data.Eid ?? 0;
+                
+                _context.Relatives.Remove(data);
+                _context.SaveChanges();
+                
+                TempData["SuccessMessage"] = "Relative deleted successfully";
+                return RedirectToAction("Details", "Employee", new { Id = employeeId });
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Error occurred while deleting relative: " + ex.Message;
+                return RedirectToAction("Index", "Employee");
+            }
+        }
     }
  }
