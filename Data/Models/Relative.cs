@@ -11,7 +11,7 @@ public partial class Relative
 
     public string? Email { get; set; }
 
-    public int? Phone { get; set; }
+    public string? Phone { get; set; }
 
     public string? Relation { get; set; }
 

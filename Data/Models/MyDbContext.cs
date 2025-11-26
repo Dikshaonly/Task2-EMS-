@@ -71,17 +71,18 @@ public partial class MyDbContext : DbContext
 
         modelBuilder.Entity<Relative>(entity =>
         {
-            entity.HasKey(e => e.Rid).HasName("PK__Relative__CAF055CA9483A75B");
+            entity.HasKey(e => e.Rid).HasName("PK__Relative__CAF055CA065AD8FF");
 
             entity.ToTable("Relative");
 
             entity.Property(e => e.Email).HasMaxLength(90);
             entity.Property(e => e.Name).HasMaxLength(90);
+            entity.Property(e => e.Phone).HasMaxLength(90);
             entity.Property(e => e.Relation).HasMaxLength(90);
 
             entity.HasOne(d => d.EidNavigation).WithMany(p => p.Relatives)
                 .HasForeignKey(d => d.Eid)
-                .HasConstraintName("FK__Relative__Eid__2C3393D0");
+                .HasConstraintName("FK__Relative__Eid__31EC6D26");
         });
 
         OnModelCreatingPartial(modelBuilder);
