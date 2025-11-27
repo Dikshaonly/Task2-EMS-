@@ -17,6 +17,8 @@ public partial class Employee
 
     public int? Did { get; set; }
 
+    public string? Gender { get; set; }
+
     public virtual Department? Dep { get; set; }
 
     public virtual Designation? DidNavigation { get; set; }

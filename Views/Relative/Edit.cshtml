@@ -23,6 +23,13 @@
 </div>
 
 <div class="mb-3">
+<label  class="form-label">Gender</label><br>
+<input  type = "radio" Value = "Male" asp-for="Gender"  />Male
+<input  type = "radio" Value = "Female" asp-for="Gender"  />Female
+<input  type = "radio" Value = "Others" asp-for="Gender"  />Others
+</div>
+
+<div class="mb-3">
 <label asp-for="Relation" class="form-label">Relation</label>
 <select asp-for="Relation" class="form-control">
     <option value="">-- Select Relation --</option>

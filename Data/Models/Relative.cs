@@ -17,5 +17,7 @@ public partial class Relative
 
     public int? Eid { get; set; }
 
+    public string? Gender { get; set; }
+
     public virtual Employee? EidNavigation { get; set; }
 }

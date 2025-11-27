@@ -57,6 +57,7 @@ public partial class MyDbContext : DbContext
 
             entity.Property(e => e.DepId).HasColumnName("DepID");
             entity.Property(e => e.Email).HasMaxLength(90);
+            entity.Property(e => e.Gender).HasMaxLength(20);
             entity.Property(e => e.Name).HasMaxLength(90);
             entity.Property(e => e.Phone).HasMaxLength(20);
 
@@ -76,6 +77,7 @@ public partial class MyDbContext : DbContext
             entity.ToTable("Relative");
 
             entity.Property(e => e.Email).HasMaxLength(90);
+            entity.Property(e => e.Gender).HasMaxLength(20);
             entity.Property(e => e.Name).HasMaxLength(90);
             entity.Property(e => e.Phone).HasMaxLength(90);
             entity.Property(e => e.Relation).HasMaxLength(90);
