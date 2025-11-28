@@ -1,8 +1,46 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<div class="">
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Employee's Stats</h1>
+   <!-- <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
 </div>
+<hr>
+<div class="row">
+<div class ="col-sm-2">
+<h3>Family Status</h3>
+<span>With Relatives</span>
+<div class="progress mt-2">
+<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="@ViewBag.WithRelativesPercentage" aria-valuein="0" aria-valuemax="100" style="width:@ViewBag.WithRelativesPercentage%">
+<span class="sr-only">@ViewBag.WithRelativesPercentage%</span>
+</div>
+</div>
+<span>Without Relatives</span>
+<div class="progress mt-2">
+<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="@ViewBag.WithoutRelativesPercentage" aria-valuein="0" aria-valuemax="100" style="width:@ViewBag.WithoutRelativesPercentage%">
+<span class="sr-only">@ViewBag.WithoutRelativesPercentage%</span>
+</div>
+</div>
+</div>
+<div class = "col-sm-8">
+<h3 class = "text-center">Employee's Gender Distribution</h3>
+<div class = "text-center">
+<div class = "inner-circle">
+<div class = "outer-circle female">
+</div>
+</div>
+<div class = "inner-circle">
+<div class = "outer-circle male">
+</div>
+</div>
+<div class = "inner-circle">
+<div class = "outer-circle others">
+</div>
+</div>
+<div>
+</div>
+</div>
+</div>
+

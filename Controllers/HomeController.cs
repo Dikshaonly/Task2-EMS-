@@ -1,20 +1,50 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 using Task2.Models;
+using Task2.Data.Models;
 
 namespace Task2.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly MyDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, MyDbContext context)
     {
         _logger = logger;
+        _context=context;
     }
 
     public IActionResult Index()
     {
+        var totalEmployees =_context.Employees.Count();
+
+        var withRelatives = _context.Employees
+        .Include(e=>e.Relatives)
+        .Where(e=>e.Relatives.Any())
+        .Count();
+
+        var withoutRelatives = totalEmployees - withRelatives;
+
+        var withRelativesPercentage = totalEmployees > 0 
+            ? Math.Round((double)withRelatives / totalEmployees * 100, 1) 
+            : 0;
+
+        var withoutRelativesPercentage = totalEmployees > 0 
+        ? Math.Round((double)withoutRelatives/totalEmployees * 100, 1)
+        :0;
+         
+
+         ViewBag.TotalEmployee = totalEmployees;
+         ViewBag.WithRelatives = withRelatives;
+         ViewBag.WithoutRelatives = withoutRelatives;
+         ViewBag.WithRelativesPercentage = withRelativesPercentage;
+         ViewBag.WithoutRelativesPercentage = withoutRelativesPercentage;
         return View();
     }
 

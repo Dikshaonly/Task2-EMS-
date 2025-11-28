@@ -1,6 +1,38 @@
 html {
   font-size: 14px;
 }
+*{
+  margin:0;
+  padding:0;
+  font-family: "Nunito", sans-serif;
+}
+.inner-circle{
+  
+}
+.outer-circle{
+  display: inline-block;
+  border-radius:250px;
+  height: 100px;
+  width:100px;
+  margin: 20px 20px;
+}
+.gender{
+  justify-content: center;
+  align-items: center;
+
+}
+
+.female{
+  border: 10px solid #F6B1CE;
+
+}
+.male{
+  border: 10px solid #3DB6B1;
+}
+
+.others{
+  border: 10px solid #658C58;
+}
 
 @media (min-width: 768px) {
   html {
