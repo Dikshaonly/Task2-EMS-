@@ -6,33 +6,60 @@ html {
   padding:0;
   font-family: "Nunito", sans-serif;
 }
-.inner-circle{
-  
-}
-.outer-circle{
-  display: inline-block;
-  border-radius:250px;
-  height: 100px;
+.circular-progress-sm{
   width:100px;
-  margin: 20px 20px;
+  height: 100px;
+  display: inline-block;
 }
+.circular-progress-sm::before{
+  width: 80px;
+  height: 80px;
+}
+.circular-progress-female::before,.circular-progress-male::before,.circular-progress-others::before{
+  content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.circular-progress-female{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(#F6B1CE var(--progress),#e9ecef var(--progress));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circular-progress-male{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(#3DB6B1 var(--progress),#e9ecef var(--progress));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-progress-others{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(#658C58 var(--progress),#e9ecef var(--progress));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .gender{
   justify-content: center;
   align-items: center;
 
 }
 
-.female{
-  border: 10px solid #F6B1CE;
 
-}
-.male{
-  border: 10px solid #3DB6B1;
-}
-
-.others{
-  border: 10px solid #658C58;
-}
 
 @media (min-width: 768px) {
   html {
