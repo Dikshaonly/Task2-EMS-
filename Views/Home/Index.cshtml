@@ -26,14 +26,51 @@
 </div>
 <div class = "col-sm-8">
 <h3 class = "text-center">Employee's Gender Distribution</h3>
-<div class = "text-center">
-<div class = "circular-progress-female circular-progress-sm" style = "--progress:45%;">
+<div class = "gender-container">
+@foreach (var gender in ViewBag.EmployeesByGender)
+                {
+                    var circularClass = "";
+                    var icon = "";
+                    
+                    if (gender.Gender == "Male")
+                    {
+                        circularClass = "circular-progress-male";
+                        icon = "👨";
+                    }
+                    else if (gender.Gender == "Female")
+                    {
+                        circularClass = "circular-progress-female";
+                        icon = "👩";
+                    }
+                    else if (gender.Gender == "Others")
+                    {
+                        circularClass = "circular-progress-others";
+                        icon = "⚧️";
+                    }
+                    else
+                    {
+                        circularClass = "circular-progress-others";
+                        icon = "❓";
+                    }
+<div class = "circular-progress-female circular-progress-sm" style = "--progress:@gender.Percentage%;">
+<div class="progress-value">
+<div style="font-size: 2.5rem;">@gender.Percentage%</div>
+<div style="font-size: 1rem; font-weight: normal;">@gender.Count</div>
 </div>
-<div class = "circular-progress-male circular-progress-sm" style = "--progress:50%;">
 </div>
-<div class = "circular-progress-others circular-progress-sm" style = "--progress:75%;">
+<div class = "circular-progress-male circular-progress-sm" style = "--progress:@gender.Percentage%;">
+<div class="progress-value">
+<div style="font-size: 2.5rem;">@gender.Percentage%</div>
+<div style="font-size: 1rem; font-weight: normal;">@gender.Count</div>
 </div>
-<div>
+</div>
+<div class = "circular-progress-others circular-progress-sm" style = "--progress:@gender.Percentage%;">
+<div class="progress-value">
+<div style="font-size: 2.5rem;">@gender.Percentage%</div>
+<div style="font-size: 1rem; font-weight: normal;">@gender.Count</div>
+</div>
+</div>
+}
 </div>
 </div>
 </div>

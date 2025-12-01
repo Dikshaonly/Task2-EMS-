@@ -40,21 +40,21 @@ public class HomeController : Controller
         :0;
          
          //group by gender
-          /* var employeesByGender = _context.Employees
+          var employeesByGender = _context.Employees
             .GroupBy(e => string.IsNullOrEmpty(e.Gender) ? "Not Specified" : e.Gender)
             .Select(g => new { 
                 Gender = g.Key, 
                 Count = g.Count(),
                 Percentage = totalEmployees > 0 ? Math.Round((double)g.Count() / totalEmployees * 100, 1) : 0
             })
-            .ToList();*/
+            .ToList();
 
          ViewBag.TotalEmployee = totalEmployees;
          ViewBag.WithRelatives = withRelatives;
          ViewBag.WithoutRelatives = withoutRelatives;
          ViewBag.WithRelativesPercentage = withRelativesPercentage;
          ViewBag.WithoutRelativesPercentage = withoutRelativesPercentage;
-         //ViewBag.EmployeesByGender = employeesByGender;
+         ViewBag.EmployeesByGender = employeesByGender;
         return View();
     }
 
