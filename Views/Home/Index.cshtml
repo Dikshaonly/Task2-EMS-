@@ -52,22 +52,10 @@
                         circularClass = "circular-progress-others";
                         icon = "❓";
                     }
-<div class = "circular-progress-female circular-progress-sm" style = "--progress:@gender.Percentage%;">
+<div class = "@circularClass circular-progress-sm" style = "--progress:@gender.Percentage%;">
 <div class="progress-value">
 <div style="font-size: 2.5rem;">@gender.Percentage%</div>
-<div style="font-size: 1rem; font-weight: normal;">@gender.Count</div>
-</div>
-</div>
-<div class = "circular-progress-male circular-progress-sm" style = "--progress:@gender.Percentage%;">
-<div class="progress-value">
-<div style="font-size: 2.5rem;">@gender.Percentage%</div>
-<div style="font-size: 1rem; font-weight: normal;">@gender.Count</div>
-</div>
-</div>
-<div class = "circular-progress-others circular-progress-sm" style = "--progress:@gender.Percentage%;">
-<div class="progress-value">
-<div style="font-size: 2.5rem;">@gender.Percentage%</div>
-<div style="font-size: 1rem; font-weight: normal;">@gender.Count</div>
+<div style="font-size: 1rem; font-weight: normal;">@icon @gender.Gender</div>
 </div>
 </div>
 }
